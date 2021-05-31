@@ -246,6 +246,9 @@ Public Class FailCounter
     Private Sub SN_IN_KeyDown(sender As Object, e As KeyEventArgs) Handles SN_IN.KeyDown
 
         If e.KeyCode = Keys.Enter Then
+            If SN_IN.Text = "" Then
+                Return
+            End If
             SQL = "USE FAS SELECT FullSTBSN     FROM [FAS].[dbo].[FAS_Start]  where FullSTBSN = '" & SN_IN.Text & "'"
             If SelectString(SQL) <> "" Then
                 SNMID = Mid(SN_IN.Text, 16)
